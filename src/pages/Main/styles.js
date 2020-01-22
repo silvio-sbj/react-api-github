@@ -29,10 +29,12 @@ export const Form = styled.form`
 
   input {
     flex: 1;
-    border: 1px solid #eee;
+    border: 1px solid ${props => (props.error ? '#ff6b6b' : '#eee')};
     padding: 10px 15px;
     border-radius: 4px;
     font-size: 16px;
+
+    transition: border 0.25s ease-out;
   }
 `;
 
@@ -105,4 +107,11 @@ export const List = styled.ul`
     color: #7159c1;
     text-decoration: none;
   }
+`;
+
+export const ErrorDiv = styled.div`
+  font-size: 14px;
+  font-weight: bold;
+  color: #ff6b6b;
+  padding: 2px 0;
 `;

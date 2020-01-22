@@ -7,7 +7,7 @@ export const Loading = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10vh;
+  height: 100vh;
 `;
 
 export const Owner = styled.header`
@@ -24,7 +24,7 @@ export const Owner = styled.header`
   img {
     width: 120px;
     border-radius: 50%;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   h1 {
@@ -43,14 +43,13 @@ export const Owner = styled.header`
 `;
 
 export const IssueList = styled.ul`
-  padding-top: 30px;
-  margin-top: 30px;
-  border-top: 1px solid #eee;
+  padding-top: 10px;
+  margin-top: 10px;
   list-style: none;
 
   li {
     display: flex;
-    padding: 15px 10px;
+    padding: 10px 10px;
     border: 1px solid #eee;
     border-radius: 4px;
   }
@@ -71,7 +70,7 @@ export const IssueList = styled.ul`
     margin-left: 15px;
 
     strong {
-      font-size: 16px;
+      font-size: 14px;
 
       a {
         text-decoration: none;
@@ -96,8 +95,62 @@ export const IssueList = styled.ul`
 
     p {
       margin-top: 5px;
-      font-size: 16px;
+      font-size: 14px;
       color: #999;
     }
+  }
+`;
+
+export const IssueFilter = styled.div`
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 100px;
+  margin-top: 20px;
+
+  div {
+    display: flex;
+    flex-direction: row;
+
+    input {
+      margin-right: 5px;
+    }
+  }
+`;
+
+export const PageActions = styled.div`
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+
+  button {
+    transition: opacity 0.25s ease-out;
+    border-radius: 4px;
+    outline: 0;
+    border: 0;
+    padding: 8px;
+    font-size: 12px;
+    background: #cfc7ea;
+    font-weight: bold;
+    min-width: 150px;
+
+    &:hover {
+      background: #7159c1;
+      color: #fff;
+    }
+
+    &:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+  }
+
+  span {
+    font-size: 12px;
+    font-weight: bold;
   }
 `;
