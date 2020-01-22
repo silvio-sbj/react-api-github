@@ -97,9 +97,11 @@ export default class Repository extends Component {
 
   handlePage = async action => {
     const { page } = this.state;
+
     this.setState({
       page: action === 'back' ? page - 1 : page + 1,
     });
+
     this.applyFilter();
   };
 
