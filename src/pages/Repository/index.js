@@ -16,16 +16,19 @@ export default class Repository extends Component {
       loading: true,
       filters: [
         {
+          id: 1,
           value: 'all',
           checked: false,
           title: 'All',
         },
         {
+          id: 2,
           value: 'open',
           checked: true,
           title: 'Open',
         },
         {
+          id: 3,
           value: 'closed',
           checked: false,
           title: 'Closed',
@@ -59,9 +62,9 @@ export default class Repository extends Component {
   }
 
   applyFilter = async () => {
-    const repoName = this.state.repository.full_name;
+    const { repository, filterSelected, page } = this.state;
 
-    const { filterSelected, page } = this.state;
+    const repoName = repository.full_name;
 
     const issues = await api.get(`/repos/${repoName}/issues`, {
       params: {
@@ -78,22 +81,23 @@ export default class Repository extends Component {
     const { filters } = this.state;
     const filterSelected = e.target.value;
 
-    await filters.map(item => {
-      if (item.value === filterSelected) {
-        item.checked = true;
+    filters.forEach(item => {
+      const i = item;
+      if (i.value === filterSelected) {
+        i.checked = true;
       } else {
-        item.checked = false;
+        i.checked = false;
       }
     });
 
-    await this.setState({ filters, filterSelected, page: 1 });
+    this.setState({ filters, filterSelected, page: 1 });
 
     this.applyFilter();
   };
 
   handlePage = async action => {
     const { page } = this.state;
-    await this.setState({
+    this.setState({
       page: action === 'back' ? page - 1 : page + 1,
     });
     this.applyFilter();
@@ -117,12 +121,13 @@ export default class Repository extends Component {
 
         <IssueFilter onChange={this.handleFilterClick}>
           {filters.map(f => (
-            <div>
+            <div key={f.value}>
               <input
+                key={String(f.id)}
                 type="radio"
                 name="filter"
                 value={f.value}
-                checked={f.checked}
+                defaultChecked={f.checked}
               />
               {f.title}
             </div>
